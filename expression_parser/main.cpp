@@ -9,6 +9,7 @@ int main() {
   std::string expression;
   std::getline(std::cin, expression);
 
-  std::cout << expression << std::endl;
+  Parser test_parser(expression.c_str());
+  std::cout << test_parser.Evaluate() << std::endl;
   return 0;
 }

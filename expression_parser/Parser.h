@@ -21,10 +21,20 @@ struct Expression {
 
 class Parser {
  public:
+  Parser() = delete;
+
   explicit Parser(const char *input) : input_expression_(input) {};
-  double evaluate();
+
+  double Evaluate();
  private:
-  void parse_token();
+  Expression Parse();
+  std::string ParseToken();
+  Expression ParseSimpleExpression();
+  Expression ParseComplicatedExpression(int priority);
+
+  int GetPriority(const std::string &binary_operator);
+
+  double EvaluateExpression(const Expression &expression);
 
   const char *input_expression_;
 };
